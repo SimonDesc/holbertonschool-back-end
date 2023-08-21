@@ -3,7 +3,7 @@
 import requests
 import sys
 
-if __name__ == "__main__" :
+if __name__ == "__main__":
     if len(sys.argv) < 2:
         print("Usage: script_name employee_id")
         sys.exit(1)
@@ -43,8 +43,10 @@ if __name__ == "__main__" :
             tasks_title.append(task["title"])
 
     # print final result
-    print(f"Employee {name_employee} is done with tasks"
-        f"({tasks_completed}/{number_total_task}):")
+    print(
+        f"Employee {name_employee} is done with tasks"
+        f"({tasks_completed}/{number_total_task}):"
+    )
 
     for title in tasks_title:
         print("\t" + title)
