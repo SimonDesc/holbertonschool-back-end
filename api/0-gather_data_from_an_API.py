@@ -12,7 +12,10 @@ def get_employee_data(employee_id):
     """Retrieve employee data."""
     response = requests.get(USERS_URL, params={"id": employee_id})
     if response.status_code != 200:
-        print(f"Error fetching employee data: {response.status_code} {response.text}")
+        print(
+            f"Error fetching employee data: \
+            {response.status_code} {response.text}"
+        )
         sys.exit(1)
     return response.json()[0]
 
@@ -21,7 +24,10 @@ def get_tasks_data(user_id):
     """Retrieve tasks data."""
     response = requests.get(TODOS_URL, params={"userId": user_id})
     if response.status_code != 200:
-        print(f"Error fetching task data: {response.status_code} {response.text}")
+        print(
+            f"Error fetching task data: \
+            {response.status_code} {response.text}"
+        )
         sys.exit(1)
     return response.json()
 
@@ -39,7 +45,10 @@ def get_task_details(tasks_data):
     return tasks_completed, tasks_title
 
 
-def display_result(name_employee, tasks_completed, number_total_task, tasks_title):
+def display_result(name_employee,
+                   tasks_completed,
+                   number_total_task,
+                   tasks_title):
     """Display the result on the standard output"""
     print(
         "Employee {} is done with tasks({}/{}):".format(
@@ -66,7 +75,10 @@ def main():
     tasks_completed, tasks_title = get_task_details(tasks_data)
     number_total_task = len(tasks_data)
 
-    display_result(name_employee, tasks_completed, number_total_task, tasks_title)
+    display_result(name_employee,
+                   tasks_completed,
+                   number_total_task,
+                   tasks_title)
 
 
 if __name__ == "__main__":
