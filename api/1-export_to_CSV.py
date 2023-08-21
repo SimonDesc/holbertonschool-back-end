@@ -1,8 +1,9 @@
 #!/usr/bin/python3
 """ Using the REST API jsonplaceholder """
+import csv
 import requests
 import sys
-import csv
+
 
 BASE_URL = "https://jsonplaceholder.typicode.com"
 USERS_URL = BASE_URL + "/users/"
@@ -58,7 +59,7 @@ def main():
         ]
         new_list.append(inner_list)
 
-    with open("USER_ID.csv", "w") as file:
+    with open(employee_id + ".csv", "w") as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         writer.writerows(new_list)
 
