@@ -59,7 +59,7 @@ def main():
         ]
         new_list.append(inner_list)
 
-    with open(employee_id + ".csv", "w") as file:
+    with open(employee_id + ".csv", "w", newline='') as file:
         writer = csv.writer(file, quoting=csv.QUOTE_ALL)
         writer.writerows(new_list)
 
