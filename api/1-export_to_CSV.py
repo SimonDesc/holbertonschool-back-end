@@ -52,10 +52,10 @@ def main():
     for task in tasks_data:
         inner_list = []
         inner_list = [
-            str(task["userId"]),
-            str(name_employee),
-            str(task["completed"]),
-            str(task["title"]),
+            task["userId"],
+            name_employee,
+            task["completed"],
+            task["title"],
         ]
         new_list.append(inner_list)
 
