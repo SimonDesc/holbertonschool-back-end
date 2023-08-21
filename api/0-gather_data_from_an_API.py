@@ -44,9 +44,10 @@ if __name__ == "__main__":
 
     # print final result
     print(
-        f"Employee {name_employee} is done with tasks"
-        f"({tasks_completed}/{number_total_task}):"
+        "Employee {} is done with tasks({}/{}):".format(
+            name_employee, tasks_completed, number_total_task
+        )
     )
 
     for title in tasks_title:
-        print("\t" + title)
+        print("\t {}".format(title))
