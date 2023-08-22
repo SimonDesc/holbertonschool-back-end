@@ -34,6 +34,26 @@ def get_tasks_data(user_id):
     return response.json()
 
 
+def get_list_task(tasks_data, name_employee):
+    """make lists with data"""
+    list_detailled = []
+    for task in tasks_data:
+        inner_list = []
+        inner_list = (task["userId"],
+                      name_employee,
+                      task["completed"],
+                      task["title"])
+        list_detailled.append(inner_list)
+    return list_detailled
+
+
+def list_to_csv(list_detailled, employee_id):
+    """list to csv file"""
+    with open(employee_id + ".csv", "w", newline="") as csvfile:
+        writer = csv.writer(csvfile, delimiter=",", quoting=csv.QUOTE_ALL)
+        writer.writerows(list_detailled)
+
+
 def main():
     if len(sys.argv) < 2:
         print("Usage: script_name employee_id")
@@ -47,36 +67,10 @@ def main():
 
     # Retrieve tasks related data
     tasks_data = get_tasks_data(employee_id)
+    detailled_list = get_list_task(tasks_data, name_employee)
 
-    # new_list = []
-    # for task in tasks_data:
-    #     inner_list = []
-    #     inner_list = [
-    #         task["userId"],
-    #         name_employee,
-    #         task["completed"],
-    #         task["title"],
-    #     ]
-    #     new_list.append(inner_list)
-
-    # with open(employee_id + ".csv", "w", newline='') as file:
-    #     writer = csv.writer(file, quoting=csv.QUOTE_ALL)
-    #     writer.writerows(new_list)
-
-    list_detailled = []
-    for task in tasks_data:
-        inner_list = []
-        inner_list = [
-            task["userId"],
-            name_employee,
-            task["completed"],
-            task["title"],
-        ]
-        list_detailled.append(inner_list)
-
-    with open(employee_id + ".csv", "w", newline="") as csvfile:
-        writer = csv.writer(csvfile, delimiter=",", quoting=csv.QUOTE_ALL)
-        writer.writerows(list_detailled)
+    # Export to CSV file
+    list_to_csv(detailled_list, employee_id)
 
 
 if __name__ == "__main__":
