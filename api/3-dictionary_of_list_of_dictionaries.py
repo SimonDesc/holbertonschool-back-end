@@ -63,8 +63,8 @@ def get_json_dict(employee_data):
         tasks_data = get_tasks_data(user_id)
         new_dict = get_list_task(tasks_data, user_name, user_id)
         json_dict[user_id] = new_dict
-    
     return json_dict
+
 
 def main():
     if len(sys.argv) > 1:
@@ -76,7 +76,7 @@ def main():
 
     # Retrieve all task by employee
     json_dict = get_json_dict(employee_data)
-    
+
     # Save in json
     list_to_json(json_dict)
 
